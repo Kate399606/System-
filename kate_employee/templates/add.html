@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Employee</h2>
+<form method="POST">
+     <input class="form-control mb-2" name="id" placeholder="ID">
+    <input class="form-control mb-2" name="name" placeholder="Name">
+    <input class="form-control mb-2" name="position" placeholder="Position">
+    <input class="form-control mb-2" name="office" placeholder="Office">
+    <button class="btn btn-success">Add</button>
+</form>
+{% endblock %}

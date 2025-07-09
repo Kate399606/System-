@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Employees</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr> 
+            <th>ID</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for emp in employees %}
+        <tr>
+            <td>{{ emp[1] }}</td>
+            <td>{{ emp[2] }}</td>
+            <td>{{ emp[3] }}</td>
+             <td>{{ emp[4] }}</td>
+           
+
+            <td>
+                <a href="{{ url_for('edit', id=emp[0]) }}" class="btn btn-sm btn-info">Edit</a>
+                <a href="{{ url_for('delete', id=emp[0]) }}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
