@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Console</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f1f8e9;
+      color: #1b5e20;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #33691e;
+      margin-bottom: 30px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .list {
+      background-color: #ffffff;
+      border: 2px solid #aed581;
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #c5e1a5;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #dce775;
+      color: #33691e;
+      font-weight: 600;
+    }
+
+    td input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #c5e1a5;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    td input::placeholder {
+      color: #9e9e9e;
+    }
+
+    .add-btn {
+      background-color: #8bc34a;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 20px;
+      float: right;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-btn:hover {
+      background-color: #7cb342;
+    }
+
+    .add-btn:active {
+      background-color: #689f38;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Employee list</h1>
+
+  <div class="list">
+    <table id="employeeTable">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Last Name</th>
+          <th>Position</th>
+          <th>Office</th>
+        </tr>
+      </thead>
+      <tbody id="employeeBody">
+        <!-- 5 default input rows -->
+        <tr>
+          <td><input type="text" class="empId" placeholder="e.g. 1001" /></td>
+          <td><input type="text" class="lastName" placeholder="e.g. Cruz" /></td>
+          <td><input type="text" class="position" placeholder="e.g. Engineer" /></td>
+          <td><input type="text" class="office" placeholder="e.g. Manila" /></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="empId" placeholder="e.g. 1002" /></td>
+          <td><input type="text" class="lastName" placeholder="e.g. Santos" /></td>
+          <td><input type="text" class="position" placeholder="e.g. Analyst" /></td>
+          <td><input type="text" class="office" placeholder="e.g. Cebu" /></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="empId" placeholder="e.g. 1003" /></td>
+          <td><input type="text" class="lastName" placeholder="e.g. Reyes" /></td>
+          <td><input type="text" class="position" placeholder="e.g. Manager" /></td>
+          <td><input type="text" class="office" placeholder="e.g. Davao" /></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="empId" placeholder="e.g. 1004" /></td>
+          <td><input type="text" class="lastName" placeholder="e.g. Garcia" /></td>
+          <td><input type="text" class="position" placeholder="e.g. Clerk" /></td>
+          <td><input type="text" class="office" placeholder="e.g. Iloilo" /></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="empId" placeholder="e.g. 1005" /></td>
+          <td><input type="text" class="lastName" placeholder="e.g. Lopez" /></td>
+          <td><input type="text" class="position" placeholder="e.g. Director" /></td>
+          <td><input type="text" class="office" placeholder="e.g. Baguio" /></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="add-btn" onclick="addEmployee()">Add</button>
+  </div>
+
+  <script>
+    function addEmployee() {
+      const rows = document.querySelectorAll("#employeeBody tr");
+
+      rows.forEach((row) => {
+        const id = row.querySelector(".empId")?.value.trim();
+        const last = row.querySelector(".lastName")?.value.trim();
+        const pos = row.querySelector(".position")?.value.trim();
+        const office = row.querySelector(".office")?.value.trim();
+
+        if (id && last && pos && office) {
+          const newRow = document.createElement("tr");
+          newRow.innerHTML = `
+            <td>${id}</td>
+            <td>${last}</td>
+            <td>${pos}</td>
+            <td>${office}</td>
+          `;
+          document.getElementById("employeeBody").appendChild(newRow);
+
+          // Clear the current input row
+          row.querySelector(".empId").value = "";
+          row.querySelector(".lastName").value = "";
+          row.querySelector(".position").value = "";
+          row.querySelector(".office").value = "";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
